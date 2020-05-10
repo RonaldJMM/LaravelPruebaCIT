@@ -16,6 +16,7 @@ class CreateTblComentario extends Migration
         Schema::create('TBL_Comentario', function (Blueprint $table) {
             $table->increments('id');
             $table->string('descripcion');
+            $table->timestamps();
         });
     }
 

@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="">Mis Platos <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{ route('listarPlatosUsuario') }}">Mis Platos <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('paginaPrincipalUsuario') }}">Buscar Platos <span class="sr-only">(current)</span></a>
