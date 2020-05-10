@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use App\Models\TBLEstado;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,6 +15,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->truncateTables([
             'TBL_Usuario',
+        ]);
+
+        $this->call([
+
+            TBLEstadoSeeder::class,
+
         ]);
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFkTblUsuarioIdToTblPlato extends Migration
+class AddFkTblEstadoIdToTblPlato extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class AddFkTblUsuarioIdToTblPlato extends Migration
     public function up()
     {
         Schema::table('TBL_Plato', function (Blueprint $table) {
-            $table->integer('usuario_id')->unsigned()->after('descripcion');
-            $table->foreign('usuario_id')->references('id')->on('TBL_Usuario');
+            $table->integer('estado_id')->unsigned()->after('usuario_id');
+            $table->foreign('estado_id')->references('id')->on('TBL_Estado');
         });
     }
 
@@ -27,8 +27,8 @@ class AddFkTblUsuarioIdToTblPlato extends Migration
     public function down()
     {
         Schema::table('TBL_Plato', function (Blueprint $table) {
-            $table->dropForeign(['usuario_id']);
-            $table->dropColumn('usuario_id');
+            $table->dropForeign(['estado_id']);
+            $table->dropColumn('estado_id');
         });
     }
 }
