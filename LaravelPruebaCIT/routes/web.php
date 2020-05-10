@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('inicio');
-});
+Route::redirect('/', 'inicio');
 
+require (__DIR__ . '/PaginaPrincipal/routesPaginaPrincipal.php');
 require (__DIR__ . '/Usuario/routesUsuario.php');
 
