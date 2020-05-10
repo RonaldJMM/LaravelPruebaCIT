@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 
 use App\Models\TBLEstado;
+use App\Models\TBLUsuario;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
 
             TBLEstadoSeeder::class,
+            TBLUsuarioSeeder::class,
 
         ]);
     }

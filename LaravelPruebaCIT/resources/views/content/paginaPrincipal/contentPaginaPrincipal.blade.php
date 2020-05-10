@@ -17,5 +17,5 @@
 </div>
 @endif
     @yield('paginaInicio')
-
+    
 @endsection

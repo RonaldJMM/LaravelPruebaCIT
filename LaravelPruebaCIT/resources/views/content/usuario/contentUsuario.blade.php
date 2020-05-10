@@ -16,8 +16,9 @@
 </div>
 </div>
 @endif
-    @yield('listaUsuario')
-    @yield('crearUsuario')
-    @yield('editarUsuario')
+    @yield('paginaPrincipalUsuario')
+    @yield('listarPlatosUsuario')
+    @yield('editarPlatoUsuario')
+    @yield('listarPlatosGenerales')
 
 @endsection
