@@ -18,6 +18,8 @@
 @endif
     @yield('paginaPrincipalUsuario')
     @yield('listarPlatosUsuario')
+    @yield('crearPlatoUsuario')
+    @yield('mostrarPlatoUsuario')
     @yield('editarPlatoUsuario')
     @yield('listarPlatosGenerales')
 

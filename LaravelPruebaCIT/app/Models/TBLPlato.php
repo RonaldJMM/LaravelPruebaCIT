@@ -12,7 +12,8 @@ class TBLPlato extends Model
 
         'nombre',
         'descripcion',
-        'usuario_id'
+        'usuario_id',
+        'estado_id'
 
     ];
 }

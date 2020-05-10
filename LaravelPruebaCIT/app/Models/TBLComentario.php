@@ -11,7 +11,8 @@ class TBLComentario extends Model
     protected $fillable = [
 
         'descripcion',
-        'plato_id'
+        'plato_id',
+        'estado_id'
 
     ];
 }
