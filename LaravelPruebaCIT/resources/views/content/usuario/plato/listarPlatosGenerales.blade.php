@@ -3,19 +3,20 @@
 @section('listarPlatosGenerales')
 
     <h1>Lista de platos Generales</h1>
-          
+    
+    <div class="alert alert-secondary" role="alert">
     <div class="card bg-secondary text-white">
         <div class="card-body">
             {{ $datosPlatosGenerales->total() }} registros | pagina {{  $datosPlatosGenerales->currentPage() }} de {{ $datosPlatosGenerales->lastPage() }}
         </div>
         </div>
         <br>
-    <table class="table table-sm table-striped table-bordered" >
+    <table class="table table-sm table-striped table-bordered table-light" >
         <thead class="thead-dark">
             <tr>
             <th scope="col">Imagen</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Accion</th>                    
+            <th scope="col">Información</th>                    
             </tr>
         </thead>
         <tbody>
@@ -42,6 +43,6 @@
         </tbody>
         </table>
         {!! $datosPlatosGenerales->render()!!}
-
+    </div>
 @endsection
 

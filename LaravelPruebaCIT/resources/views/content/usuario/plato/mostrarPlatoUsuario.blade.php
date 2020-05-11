@@ -2,10 +2,10 @@
 
 @section('mostrarPlatoUsuario')
 
-    <h1>Datos de plato de Usuario</h1>
+    <h1>Plato: {{ $plato->nombre }}</h1>
           
-    <br>
-    <table class="table table-sm table-striped table-bordered" >
+    <div class="alert alert-secondary" role="alert">
+    <table class="table table-sm table-striped table-bordered table-light" >
         <thead class="thead-dark">
             <tr>
             <th scope="col">Imagen</th>
@@ -19,40 +19,50 @@
             <td>{{$plato->nombre}}</td>
             <td>{{$plato->descripcion }}</td>
             </tr>
-            <tr><td colspan="3"><a class="btn btn-warning" href="{{ route('regresarInicio') }}" role="button">Regresar al Inicio</a></td></tr>
         </tbody>
     </table>
+    </div>
 
 
     <h1>Comentarios</h1>
-          
-    
-    <table class="table table-sm table-striped table-bordered" >
+    <div class="alert alert-secondary" role="alert">  
+    <table class="table table-sm table-striped table-bordered table-dark" >
         <thead class="thead-dark">
-            <tr>
+        </thead>
+        <tbody>  
+    <tr>
                 
-                    <form method="POST" action="{{ route('aniadirComentarioPlato', $plato->id) }}">
+        <form method="POST" action="{{ route('aniadirComentarioPlato', $plato->id) }}">
 
-                        {{ method_field('PUT') }}
-                        @csrf
-                        <td colspan="2">
-                            <textarea class="form-control" name="descripcionComentario" aria-label="With textarea" rows="3" style="resize: none"></textarea>
-                        </td>
-                        <td colspan="1">
-                            <button class="btn btn-success" type="submit"><img style="filter: invert(1)" src="{{ url('images/icons/plus-circle-solid.svg') }}" height="30px" width="30px"> Añadir Comentario</button>
-                        </td>
-                    </form>
-                
-            </tr>
-            <tr><td colspan="3"><div class="card bg-secondary text-white">
-                <div class="card-body">
-                    {{ $comentarios->total() }} registros | pagina {{  $comentarios->currentPage() }} de {{ $comentarios->lastPage() }}
-                </div>
-            </div></td>
-            </tr>
+            {{ method_field('PUT') }}
+            @csrf
+            <td colspan="2">
+                <textarea class="form-control" name="descripcionComentario" aria-label="With textarea" rows="3" style="resize: none"></textarea>
+            </td>
+            <td colspan="1">
+                <br>
+                <button class="btn btn-success" type="submit"><img style="filter: invert(1)" src="{{ url('images/icons/plus-circle-solid.svg') }}" height="30px" width="30px"> Añadir Comentario</button>
+            </td>
+        </form>
+    
+</tr>
+</tbody>
+</table>
+<div class="card bg-secondary text-white">
+    <div class="card-body">
+        {{ $comentarios->total() }} registros | pagina {{  $comentarios->currentPage() }} de {{ $comentarios->lastPage() }}
+    </div>
+</div>
+<br>
+    
+    <table class="table table-sm table-striped table-bordered table-light" >
+        <thead class="thead-dark">
+            
             <tr>
             <th scope="col" colspan="2">Descripcion</th>
-            <th scope="col" colspan="1">Accion</th>                    
+            <th scope="col" colspan="1">Editar</th> 
+            <th scope="col" colspan="1">Estado</th> 
+            <th scope="col" colspan="1">Eliminar</th>                    
             </tr>
         </thead>
         <tbody>
@@ -60,12 +70,15 @@
             @if ($comentario->estado_id == 1 || $comentario->usuario_id == $idUsuario)
             <tr>
              <td colspan="2">{{$comentario->descripcion}}</td>
-            <td colspan="1">
-                <center>
+            
                 @if ($comentario->usuario_id == $idUsuario)
-
+                <td colspan="1">
+                    <center>
                 <a class="btn btn-primary" href="{{ route('editarComentarioPlato', ['idPlato' => $plato->id, 'idComentario' => $comentario->id]) }}" role="button"><img style="filter: invert(1)" src="{{ url('images/icons/edit-solid.svg') }}" height="30px" width="30px"></a>
-         
+                    </center>
+                </td>
+                <td colspan="1">
+                    <center>
                 <form method="POST" action="{{ route('deshabilitarComentarioPlatoVista', ['idPlato' => $plato->id, 'idComentario' => $comentario->id]) }}">
 
                     {{ method_field('PUT') }}
@@ -76,12 +89,16 @@
                         <button class="btn btn-danger" type="submit"><img style="filter: invert(1)" src="{{ url('images/icons/eye-slash-solid.svg') }}" height="30px" width="30px"></button>
                     @endif
                 </form>
-
+                    </center>
+                </td>
+                <td colspan="1">
+                    <center>
                 <a class="btn btn-danger" href="{{ route('eliminarComentarioPlato', ['idPlato' => $plato->id, 'idComentario' => $comentario->id]) }}" role="button"><img style="filter: invert(1)" src="{{ url('images/icons/trash-alt-solid.svg') }}" height="30px" width="30px"></a>
+                    </center>
+                </td>
                 @endif
                 
-                </center>
-            </td>
+                
             </tr>
 
             @endif
@@ -93,6 +110,7 @@
         </tbody>
         </table>
         {!! $comentarios->render()!!}
-
+    </div>
+    <a class="btn btn-warning" href="{{ route('regresarInicio') }}" role="button">Regresar al Inicio</a>
 
 @endsection

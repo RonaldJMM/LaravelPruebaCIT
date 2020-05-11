@@ -3,8 +3,8 @@
 @section('editarPlatoUsuario')
 
 <h1>Edicion de comentario del plato {{ $datosPlato->nombre }}</h1>
-
-<table class="table table-sm table-striped table-bordered">
+<div class="alert alert-secondary" role="alert">
+<table class="table table-sm table-striped table-bordered table-light">
     <thead>
     </thead>
     <tbody>
@@ -40,7 +40,7 @@
 </tr>
 </tbody>
 </table>  
-
+</div>
 <a class="btn btn-warning" href="{{ route('mostrarPlatoUsuario',$datosPlato->id) }}" role="button">Regresar</a>
 
 @endsection

@@ -3,8 +3,8 @@
 @section('editarPlatoUsuario')
 
 <h1>Editar Plato de Usuario</h1>
-
-<table class="table table-sm table-striped table-bordered">
+<div class="alert alert-secondary" role="alert">
+<table class="table table-sm table-striped table-bordered table-light">
     <thead>
     </thead>
     <tbody>
@@ -46,7 +46,7 @@
 
 </tbody>
 </table>  
-
+</div>
 <a class="btn btn-warning" href="{{ route('listarPlatosUsuario') }}" role="button">Regresar</a>
 
 @endsection
