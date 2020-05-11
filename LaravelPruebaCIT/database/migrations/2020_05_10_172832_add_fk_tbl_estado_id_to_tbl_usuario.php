@@ -14,7 +14,7 @@ class AddFkTblEstadoIdToTblUsuario extends Migration
     public function up()
     {
         Schema::table('TBL_Usuario', function (Blueprint $table) {
-            $table->integer('estado_id')->unsigned()->after('contrasenia');
+            $table->integer('estado_id')->unsigned()->after('password');
             $table->foreign('estado_id')->references('id')->on('TBL_Estado');
         });
     }
