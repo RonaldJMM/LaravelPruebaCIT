@@ -1,7 +1,5 @@
 @extends('content.content')
 
-@include('navbar.navbarUsuario')
-
 @section('contentUsuario')
 
 @if ($errors->any())

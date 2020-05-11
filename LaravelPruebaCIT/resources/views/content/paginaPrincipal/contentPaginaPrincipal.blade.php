@@ -1,7 +1,5 @@
 @extends('content.content')
 
-@include('navbar.navbarPrincipal')
-
 @section('contentPaginaPrincipal')
 
 @if ($errors->any())

@@ -18,11 +18,13 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+            <a class="navbar-brand" href="{{ url('/') }}">
+                <img src="{{ url('images/aplication/iconoProject.png')}}" width="40" height="40" class="d-inline-block align-top" alt="">
+                Restaurante CIT
+            </a>
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -30,7 +32,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        @guest
 
+                        @else
+                        <li>
+                        <a class="btn btn-light" href="{{ route('listarPlatosUsuario') }}" role="button">Mis platos</a>
+                        &nbsp;&nbsp;
+                        </li>
+                        <li>
+                        <a class="btn btn-light" href="{{ route('listarPlatosGenerales') }}" role="button">Buscar Platos</a>
+                       
+                        </li>
+                        @endguest
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -46,9 +59,11 @@
                                 </li>
                             @endif
                         @else
+                        
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
+                                    <img style="filter: invert(1)" src="{{ url('images/icons/user-cog-solid.svg') }}" height="30px" width="30px">
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
