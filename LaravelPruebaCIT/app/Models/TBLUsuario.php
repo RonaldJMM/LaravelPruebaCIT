@@ -1,20 +1,22 @@
 <?php
 
 namespace App\Models;
-
-use Illuminate\Database\Eloquent\Model;
-
-class TBLUsuario extends Model
-{
+ 
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+ 
+class TBLUsuario extends Authenticatable{
+ 
+    use Notifiable;
+ 
     protected $table = 'TBL_Usuario';
-
     protected $fillable = [
 
         'nombre',
-        'apellido_p',
-        'apellido_m',
-        'correo_electronico',
-        'contrasenia',
+        'apellido',
+        'email',
+        'password',
         'estado_id'
 
     ];
