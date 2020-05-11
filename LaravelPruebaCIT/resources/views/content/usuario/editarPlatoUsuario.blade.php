@@ -9,7 +9,7 @@
     </thead>
     <tbody>
 
-<form method="POST" action="{{route('actualizarPlatoUsuario', $datosPlatoUsuario->id)}}">
+<form method="POST" action="{{route('actualizarPlatoUsuario', $datosPlatoUsuario->id)}}" enctype="multipart/form-data">
 
     {{ method_field('PUT') }}
     @csrf
@@ -21,6 +21,10 @@
     <tr>
         <td scope="col"><label for="descripcion">Descripcion:</label></td>
         <td scope="col"><input type="text" name="descripcion" id="descripcion" value="{{ $datosPlatoUsuario->descripcion}}"></td>
+    </tr>
+    <tr>
+        <td><label for="imagen">Imagen:</label></td>
+        <td><input type="file" name="imagen" accept="image/png, .jpeg, .jpg, image/gif"></td>
     </tr>
 
     <tr><td colspan="1"><button type="submit" class="btn btn-info">Actualizar</button></td>

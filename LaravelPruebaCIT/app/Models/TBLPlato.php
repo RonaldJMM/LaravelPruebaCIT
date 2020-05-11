@@ -13,6 +13,7 @@ class TBLPlato extends Model
         'nombre',
         'descripcion',
         'usuario_id',
+        'url_imagen',
         'estado_id'
 
     ];

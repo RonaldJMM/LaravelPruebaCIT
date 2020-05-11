@@ -17,6 +17,7 @@ class CreateTblPlato extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('descripcion');
+            $table->string('url_imagen');
             $table->timestamps();
         });
     }

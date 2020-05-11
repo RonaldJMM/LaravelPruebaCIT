@@ -22,7 +22,7 @@
             <tr><td colspan="3"><a class="btn btn-success" href="{{ route('crearPlatoUsuario') }}" role="button"><img style="filter: invert(1)" src="../images/icons/plus-circle-solid.svg" height="30px" width="30px"> Crear Nuevo </a></td></tr>
             @forelse ($datosPlatosUsuario as $plato)
             <tr>
-            <td><img src="../images/anuncios/anuncio1.jpg" class="rounded mx-auto d-block" height="50px" width="50px"></td>
+            <td><img src="{{ $plato->url_imagen }}" class="img-thumbnail border-dark rounded mx-auto d-block" height="50px" width="50px"></td>
             <td>{{$plato->nombre}}</td>
             <td>
                 <center>

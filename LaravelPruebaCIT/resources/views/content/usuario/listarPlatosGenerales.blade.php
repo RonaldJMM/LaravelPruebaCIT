@@ -24,7 +24,7 @@
                 
             
                 <tr>
-                <td><img src="../images/anuncios/anuncio1.jpg" class="rounded mx-auto d-block" height="50px" width="50px"></td>
+                <td><img src="{{ $plato->url_imagen }}" class="img-thumbnail border-dark rounded mx-auto d-block" height="50px" width="50px"></td>
                 <td>{{$plato->nombre}}</td>
                 <td>
                     <center>

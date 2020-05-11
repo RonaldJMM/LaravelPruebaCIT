@@ -14,7 +14,7 @@ class AddFkTblUsuarioIdToTblPlato extends Migration
     public function up()
     {
         Schema::table('TBL_Plato', function (Blueprint $table) {
-            $table->integer('usuario_id')->unsigned()->after('descripcion');
+            $table->integer('usuario_id')->unsigned()->after('url_imagen');
             $table->foreign('usuario_id')->references('id')->on('TBL_Usuario');
         });
     }

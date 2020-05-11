@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use \Session;
+
 use App\Models\TBLPlato;
+
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File; 
 
 class PlatoController extends Controller
 {
     public function listarPlatosGenerales(){
 
-        $platos = TBLPlato::paginate();
+        $platos = TBLPlato::orderBy('id','desc')->paginate();
 
         $NDatosPlatos = "No se han registrado platos";
 
@@ -57,6 +61,13 @@ class PlatoController extends Controller
             'descripcion.required' => 'Se debe llenar la descripcion',
         ]);
 
+        if(request()->file('imagen')){
+            $path = Storage::disk('public')->put('images\usuario\plato',request()->file('imagen'));
+            //muestra la url para almacenarla en BD
+        }else{
+            return redirect(route('listarPlatosUsuario')); 
+        } 
+
         $datosPlato = request();
         
         TBLPlato::create([
@@ -64,6 +75,7 @@ class PlatoController extends Controller
             'nombre' => $datosPlato->nombre,
             'descripcion' => $datosPlato->descripcion,
             'usuario_id' => $idUsuario,
+            'url_imagen' => asset($path),
             'estado_id' => 1,
         ]);
 
@@ -115,6 +127,14 @@ class PlatoController extends Controller
 
             $datosPlatoUsuario->nombre = $datosPlato['nombre'];
             $datosPlatoUsuario->descripcion = $datosPlato['descripcion'];
+
+            if(request()->file('imagen')){
+                //falta eliminar imagen
+                File::delete($datosPlatoUsuario->url_imagen);
+                $path = Storage::disk('public')->put('images\usuario\plato',request()->file('imagen'));
+                $datosPlatoUsuario->url_imagen = asset($path);
+            }
+
             $datosPlatoUsuario->save();
 
             return redirect(route('editarPlatoUsuario', $idPlato));
@@ -148,7 +168,7 @@ class PlatoController extends Controller
         $datosPlatoUsuario = TBLPlato::find($idPlato);
 
         if($datosPlatoUsuario->usuario_id == Session::get('Usuario_Id')){
-            
+
             if($datosPlatoUsuario->estado_id == 1){
                 $datosPlatoUsuario->estado_id = 2;
             }else{

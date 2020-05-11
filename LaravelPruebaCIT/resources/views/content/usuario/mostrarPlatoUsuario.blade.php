@@ -15,11 +15,11 @@
         </thead>
         <tbody>
             <tr>
-            <td><img src="../images/anuncios/anuncio1.jpg" class="rounded mx-auto d-block" height="50px" width="50px"></td>
+            <td><img src="{{ $plato->url_imagen }}" class="img-thumbnail border-dark rounded mx-auto d-block" height="50px" width="50px"></td>
             <td>{{$plato->nombre}}</td>
             <td>{{$plato->descripcion }}</td>
             </tr>
-            <tr><td colspan="3"><a class="btn btn-warning text-white" href="{{ route('regresarInicio') }}" role="button">Regresar al Inicio</a></td></tr>
+            <tr><td colspan="3"><a class="btn btn-warning" href="{{ route('regresarInicio') }}" role="button">Regresar al Inicio</a></td></tr>
         </tbody>
     </table>
 
