@@ -16,10 +16,11 @@ class CreateTblUsuario extends Migration
         Schema::create('TBL_Usuario', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('apellido_p');
-            $table->string('apellido_m');
-            $table->string('correo_electronico')->unique();
-            $table->string('contrasenia');
+            $table->string('apellido');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
