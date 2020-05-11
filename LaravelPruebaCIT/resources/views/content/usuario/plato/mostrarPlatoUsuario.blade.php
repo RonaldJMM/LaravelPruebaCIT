@@ -57,14 +57,16 @@
         </thead>
         <tbody>
             @forelse ($comentarios as $comentario)
+            @if ($comentario->estado_id == 1 || $comentario->usuario_id == $idUsuario)
             <tr>
              <td colspan="2">{{$comentario->descripcion}}</td>
             <td colspan="1">
                 <center>
                 @if ($comentario->usuario_id == $idUsuario)
-                <a class="btn btn-primary" role="button"><img style="filter: invert(1)" src="{{ url('images/icons/edit-solid.svg') }}" height="30px" width="30px"></a>
-                
-                <form method="POST" >
+
+                <a class="btn btn-primary" href="{{ route('editarComentarioPlato', ['idPlato' => $plato->id, 'idComentario' => $comentario->id]) }}" role="button"><img style="filter: invert(1)" src="{{ url('images/icons/edit-solid.svg') }}" height="30px" width="30px"></a>
+         
+                <form method="POST" action="{{ route('deshabilitarComentarioPlatoVista', ['idPlato' => $plato->id, 'idComentario' => $comentario->id]) }}">
 
                     {{ method_field('PUT') }}
                     @csrf
@@ -74,10 +76,15 @@
                         <button class="btn btn-danger" type="submit"><img style="filter: invert(1)" src="{{ url('images/icons/eye-slash-solid.svg') }}" height="30px" width="30px"></button>
                     @endif
                 </form>
+
+                <a class="btn btn-danger" href="{{ route('eliminarComentarioPlato', ['idPlato' => $plato->id, 'idComentario' => $comentario->id]) }}" role="button"><img style="filter: invert(1)" src="{{ url('images/icons/trash-alt-solid.svg') }}" height="30px" width="30px"></a>
                 @endif
+                
                 </center>
             </td>
-        </tr>
+            </tr>
+
+            @endif
             @empty
             <tr>
             <td colspan="3">{{$NDatosComentarios}}</td>

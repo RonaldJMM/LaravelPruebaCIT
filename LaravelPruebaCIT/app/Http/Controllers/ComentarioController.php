@@ -35,75 +35,112 @@ class ComentarioController extends Controller
             ]);
         }
 
-        return redirect(route('mostrarPlatoUsuario',$idPlato));
+        return redirect(route('mostrarPlatoUsuario',$idPlato))
+        ->with('idUsuario');
     }
 
-    public function editarComentarioPlato($idPlato){
+    public function editarComentarioPlato($idPlato,$idComentario){
         
+        $idUsuario = Session::get('Usuario_Id');
+        $comentario = TBLComentario::where(['id' => $idComentario,])->first();
         $plato = TBLPlato::where(['id' => $idPlato,])->first();
 
-        if($plato->usuario_id == Session::get('Usuario_Id')){
+        if($comentario->usuario_id == Session::get('Usuario_Id')){
 
             $datosVista=[
-                'datosPlatoUsuario'=>$plato,
+                'datosComentarioPlato'=>$comentario,
+                'datosPlato'=>$plato,
             ];
 
-            return view('content\usuario\plato\editarPlatoUsuario', $datosVista);
+            return view('content\usuario\comentario\editarComentarioPlato', $datosVista)
+            ->with('idUsuario');
         }else{
             return view('errors\404');
         }
 
     }
 
-    public function actualizarComentarioPlato($idPlato){
+    public function actualizarComentarioPlato($idPlato,$idComentario){
         
-        $datosPlatoUsuario = TBLPlato::find($idPlato);
+        $idUsuario = Session::get('Usuario_Id');
+        $datosComentario = TBLComentario::find($idComentario);
 
-        if($datosPlatoUsuario->usuario_id == Session::get('Usuario_Id')){
+        if($datosComentario->usuario_id == Session::get('Usuario_Id')){
 
             $validacionFormulario = request()->validate([
-                'nombre' => 'required',
-                'descripcion' => ['required'],
+                'descripcionComentario' => ['required'],
             ],[
-                'nombre.required' => 'Se debe llenar el campo Nombre',
-                'descripcion.required' => 'Se debe llenar la descripcion',
+                'descripcionComentario.required' => 'Se debe llenar la descripcion',
             ]);
 
-            $datosPlato = request();
+            $datosComentarioPlato = request();
 
-            $datosPlatoUsuario->nombre = $datosPlato['nombre'];
-            $datosPlatoUsuario->descripcion = $datosPlato['descripcion'];
+            $datosComentario->descripcion = $datosComentarioPlato['descripcionComentario'];
 
-            if(request()->file('imagen')){
-                //falta eliminar imagen
-                File::delete($datosPlatoUsuario->url_imagen);
-                $path = Storage::disk('public')->put('images\usuario\plato',request()->file('imagen'));
-                $datosPlatoUsuario->url_imagen = asset($path);
-            }
+            $datosComentario->save();
 
-            $datosPlatoUsuario->save();
-
-            return redirect(route('editarPlatoUsuario', $idPlato));
+            return redirect(route('editarComentarioPlato', ['idPlato' => $idPlato, 'idComentario' => $idComentario]))
+            ->with('idUsuario');
         }else{
             return view('errors\404');
         }
     }
 
-    public function deshabilitarComentarioPlato($idPlato){
+    public function deshabilitarComentarioPlato($idPlato,$idComentario){
 
-        $datosPlatoUsuario = TBLPlato::find($idPlato);
+        $idUsuario = Session::get('Usuario_Id');
+        $datosComentarioPlato = TBLComentario::find($idComentario);
 
-        if($datosPlatoUsuario->usuario_id == Session::get('Usuario_Id')){
+        if($datosComentarioPlato->usuario_id == Session::get('Usuario_Id')){
                 
-            if($datosPlatoUsuario->estado_id == 1){
-                $datosPlatoUsuario->estado_id = 2;
+            if($datosComentarioPlato->estado_id == 1){
+                $datosComentarioPlato->estado_id = 2;
             }else{
-                $datosPlatoUsuario->estado_id = 1;
+                $datosComentarioPlato->estado_id = 1;
             }
 
-            $datosPlatoUsuario->save();
+            $datosComentarioPlato->save();
 
-            return redirect(route('editarPlatoUsuario', $idPlato));
+            return redirect(route('editarComentarioPlato', ['idPlato' => $idPlato, 'idComentario' => $idComentario]))
+            ->with('idUsuario');
+        }else{
+            return view('errors\404');
+        }
+    }
+
+    public function deshabilitarComentarioPlatoVista($idPlato,$idComentario){
+
+        $idUsuario = Session::get('Usuario_Id');
+        $datosComentarioPlato = TBLComentario::find($idComentario);
+
+        if($datosComentarioPlato->usuario_id == Session::get('Usuario_Id')){
+                
+            if($datosComentarioPlato->estado_id == 1){
+                $datosComentarioPlato->estado_id = 2;
+            }else{
+                $datosComentarioPlato->estado_id = 1;
+            }
+
+            $datosComentarioPlato->save();
+
+            return redirect(route('mostrarPlatoUsuario',$idPlato))
+            ->with('idUsuario');
+        }else{
+            return view('errors\404');
+        }
+    }
+
+    public function eliminarComentarioPlato($idPlato,$idComentario){
+
+        $idUsuario = Session::get('Usuario_Id');
+        $datosComentarioPlato = TBLComentario::find($idComentario);
+
+        if($datosComentarioPlato->usuario_id == Session::get('Usuario_Id')){
+                
+            $datosComentarioPlato->delete();
+
+            return redirect(route('mostrarPlatoUsuario',$idPlato))
+            ->with('idUsuario');
         }else{
             return view('errors\404');
         }

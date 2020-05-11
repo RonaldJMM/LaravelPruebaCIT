@@ -35,9 +35,24 @@ Route::put('/usuario/platos/{id}/actualizar', 'PlatoController@actualizarPlatoUs
 Route::put('/usuario/platos/{id}/deshabilitar', 'PlatoController@deshabilitarPlatoUsuario')
     ->name('deshabilitarPlatoUsuario');
 
-Route::put('/usuario/platos/{id}/deshabilitarvistar', 'PlatoController@deshabilitarPlatoUsuarioVista')
+Route::put('/usuario/platos/{id}/deshabilitarvista', 'PlatoController@deshabilitarPlatoUsuarioVista')
     ->name('deshabilitarPlatoUsuarioVista');
 
     //////
 Route::put('/usuario/comentarios/{idPlato}/aniadir', 'ComentarioController@aniadirComentarioPlato')
     ->name('aniadirComentarioPlato');
+
+Route::get('/usuario/comentarios/{idPlato}/{idComentario}/editar', 'ComentarioController@editarComentarioPlato')
+    ->name('editarComentarioPlato');
+
+Route::put('/usuario/comentarios/{idPlato}/{idComentario}/actualizar', 'ComentarioController@actualizarComentarioPlato')
+    ->name('actualizarComentarioPlato');
+
+Route::put('/usuario/comentarios/{idPlato}/{idComentario}/deshabilitar', 'ComentarioController@deshabilitarComentarioPlato')
+    ->name('deshabilitarComentarioPlato');
+
+Route::put('/usuario/comentarios/{idPlato}/{idComentario}/deshabilitarvista', 'ComentarioController@deshabilitarComentarioPlatoVista')
+    ->name('deshabilitarComentarioPlatoVista');
+
+Route::get('/usuario/comentarios/{idPlato}/{idComentario}/eliminar', 'ComentarioController@eliminarComentarioPlato')
+    ->name('eliminarComentarioPlato');
