@@ -11,8 +11,6 @@
 |
 */
 
-Route::redirect('/', 'inicio');
-
 require (__DIR__ . '/PaginaPrincipal/routesPaginaPrincipal.php');
 require (__DIR__ . '/Usuario/routesUsuario.php');
 
@@ -20,3 +18,5 @@ require (__DIR__ . '/Usuario/routesUsuario.php');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::redirect('/','home');
