@@ -24,7 +24,7 @@ class PlatoController extends Controller
             'NDatosPlatos' => $NDatosPlatos,
         ];
 
-        return view('content.usuario.listarPlatosGenerales', $datosVista);
+        return view('content.usuario.plato.listarPlatosGenerales', $datosVista);
     }
 
     public function listarPlatosUsuario(){
@@ -40,12 +40,12 @@ class PlatoController extends Controller
             'NDatosPlatos' => $NDatosPlatos,
         ];
 
-        return view('content.usuario.listarPlatosUsuario', $datosVista);
+        return view('content.usuario.plato.listarPlatosUsuario', $datosVista);
     }
 
     public function crearPlatoUsuario(){
 
-        return view('content\usuario\crearPlatoUsuario');
+        return view('content\usuario\plato\crearPlatoUsuario');
 
     }
 
@@ -89,7 +89,7 @@ class PlatoController extends Controller
             'plato'=>$plato,
         ];
 
-        return view('content.usuario.mostrarPlatoUsuario', $datosVista);
+        return view('content.usuario.plato.mostrarPlatoUsuario', $datosVista);
     }
 
     public function editarPlatoUsuario($idPlato){
@@ -102,7 +102,7 @@ class PlatoController extends Controller
                 'datosPlatoUsuario'=>$plato,
             ];
 
-            return view('content\usuario\editarPlatoUsuario', $datosVista);
+            return view('content\usuario\plato\editarPlatoUsuario', $datosVista);
         }else{
             return view('errors\404');
         }
