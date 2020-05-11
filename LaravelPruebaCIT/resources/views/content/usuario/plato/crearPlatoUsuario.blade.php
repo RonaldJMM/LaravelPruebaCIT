@@ -27,7 +27,7 @@
         <td><input type="file" name="imagen" accept="image/png, .jpeg, .jpg, image/gif"></td>
     </tr>
 
-    <tr><td colspan="3"><button type="submit" class="btn btn-success"><img style="filter: invert(1)" src="../../images/icons/plus-circle-solid.svg" height="30px" width="30px"> Crear</button></td>
+    <tr><td colspan="3"><button type="submit" class="btn btn-success"><img style="filter: invert(1)" src="{{ url('images/icons/plus-circle-solid.svg') }}" height="30px" width="30px"> Crear</button></td>
         
 </form>
 </tbody>

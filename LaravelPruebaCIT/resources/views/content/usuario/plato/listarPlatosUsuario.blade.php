@@ -19,25 +19,25 @@
             </tr>
         </thead>
         <tbody>
-            <tr><td colspan="3"><a class="btn btn-success" href="{{ route('crearPlatoUsuario') }}" role="button"><img style="filter: invert(1)" src="../images/icons/plus-circle-solid.svg" height="30px" width="30px"> Crear Nuevo </a></td></tr>
+            <tr><td colspan="3"><a class="btn btn-success" href="{{ route('crearPlatoUsuario') }}" role="button"><img style="filter: invert(1)" src="{{ url('images/icons/plus-circle-solid.svg') }}" height="30px" width="30px"> Crear Nuevo </a></td></tr>
             @forelse ($datosPlatosUsuario as $plato)
             <tr>
             <td><img src="{{ $plato->url_imagen }}" class="img-thumbnail border-dark rounded mx-auto d-block" height="50px" width="50px"></td>
             <td>{{$plato->nombre}}</td>
             <td>
                 <center>
-                <a class="btn btn-warning" href="{{ route('mostrarPlatoUsuario', $plato->id) }}" role="button"><img style="filter: invert(1)" src="../images/icons/info-circle-solid.svg" height="30px" width="30px"></a>
+                <a class="btn btn-warning" href="{{ route('mostrarPlatoUsuario', $plato->id) }}" role="button"><img style="filter: invert(1)" src="{{ url('images/icons/info-circle-solid.svg') }}" height="30px" width="30px"></a>
                 
-                <a class="btn btn-primary" href="{{ route('editarPlatoUsuario', $plato->id) }}" role="button"><img style="filter: invert(1)" src="../images/icons/edit-solid.svg" height="30px" width="30px"></a>
+                <a class="btn btn-primary" href="{{ route('editarPlatoUsuario', $plato->id) }}" role="button"><img style="filter: invert(1)" src="{{ url('images/icons/edit-solid.svg') }}" height="30px" width="30px"></a>
                 
                 <form method="POST" action="{{route('deshabilitarPlatoUsuarioVista', $plato->id)}}">
 
                     {{ method_field('PUT') }}
                     @csrf
                     @if ($plato->estado_id == 1)
-                        <button class="btn btn-success" type="submit"><img style="filter: invert(1)" src="../images/icons/eye-solid.svg" height="30px" width="30px"></button>
+                        <button class="btn btn-success" type="submit"><img style="filter: invert(1)" src="{{ url('images/icons/eye-solid.svg') }}" height="30px" width="30px"></button>
                     @else
-                        <button class="btn btn-danger" type="submit"><img style="filter: invert(1)" src="../images/icons/eye-slash-solid.svg" height="30px" width="30px"></button>
+                        <button class="btn btn-danger" type="submit"><img style="filter: invert(1)" src="{{ url('images/icons/eye-slash-solid.svg') }}" height="30px" width="30px"></button>
                     @endif
                 </form>
                 

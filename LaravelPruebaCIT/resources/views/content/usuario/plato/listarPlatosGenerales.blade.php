@@ -28,7 +28,7 @@
                 <td>{{$plato->nombre}}</td>
                 <td>
                     <center>
-                    <a class="btn btn-warning" href="{{ route('mostrarPlatoUsuario', $plato->id) }}" role="button"><img style="filter: invert(1)" src="../../images/icons/info-circle-solid.svg" height="30px" width="30px"></a>
+                    <a class="btn btn-warning" href="{{ route('mostrarPlatoUsuario', $plato->id) }}" role="button"><img style="filter: invert(1)" src="{{ url('images/icons/info-circle-solid.svg') }}" height="30px" width="30px"></a>
                     
                     </center>
                 </td>
