@@ -29,7 +29,21 @@
     
     <table class="table table-sm table-striped table-bordered" >
         <thead class="thead-dark">
-            <tr><td colspan="3"><a class="btn btn-success" href="{{ route('crearPlatoUsuario') }}" role="button"><img style="filter: invert(1)" src="{{ url('images/icons/plus-circle-solid.svg') }}" height="30px" width="30px"> Crear Nuevo </a></td></tr>
+            <tr>
+                
+                    <form method="POST" action="{{ route('aniadirComentarioPlato', $plato->id) }}">
+
+                        {{ method_field('PUT') }}
+                        @csrf
+                        <td colspan="2">
+                            <textarea class="form-control" name="descripcionComentario" aria-label="With textarea" rows="3" style="resize: none"></textarea>
+                        </td>
+                        <td colspan="1">
+                            <button class="btn btn-success" type="submit"><img style="filter: invert(1)" src="{{ url('images/icons/plus-circle-solid.svg') }}" height="30px" width="30px"> Añadir Comentario</button>
+                        </td>
+                    </form>
+                
+            </tr>
             <tr><td colspan="3"><div class="card bg-secondary text-white">
                 <div class="card-body">
                     {{ $comentarios->total() }} registros | pagina {{  $comentarios->currentPage() }} de {{ $comentarios->lastPage() }}
@@ -37,20 +51,20 @@
             </div></td>
             </tr>
             <tr>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Accion</th>                    
+            <th scope="col" colspan="2">Descripcion</th>
+            <th scope="col" colspan="1">Accion</th>                    
             </tr>
         </thead>
         <tbody>
             @forelse ($comentarios as $comentario)
             <tr>
-             <td>{{$comentario->descripcion}}</td>
-            <td>
+             <td colspan="2">{{$comentario->descripcion}}</td>
+            <td colspan="1">
                 <center>
                 @if ($comentario->usuario_id == $idUsuario)
-                <a class="btn btn-primary" href="{{ route('editarcomentarioUsuario', $comentario->id) }}" role="button"><img style="filter: invert(1)" src="{{ url('images/icons/edit-solid.svg') }}" height="30px" width="30px"></a>
+                <a class="btn btn-primary" role="button"><img style="filter: invert(1)" src="{{ url('images/icons/edit-solid.svg') }}" height="30px" width="30px"></a>
                 
-                <form method="POST" action="{{route('deshabilitarcomentarioUsuarioVista', $comentario->id)}}">
+                <form method="POST" >
 
                     {{ method_field('PUT') }}
                     @csrf

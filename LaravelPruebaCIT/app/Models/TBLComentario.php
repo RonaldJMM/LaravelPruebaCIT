@@ -12,6 +12,7 @@ class TBLComentario extends Model
 
         'descripcion',
         'plato_id',
+        'usuario_id',
         'estado_id'
 
     ];

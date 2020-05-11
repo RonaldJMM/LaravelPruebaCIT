@@ -39,5 +39,5 @@ Route::put('/usuario/platos/{id}/deshabilitarvistar', 'PlatoController@deshabili
     ->name('deshabilitarPlatoUsuarioVista');
 
     //////
-Route::get('/usuario/comentarios/{id}/mostrar', 'ComentarioController@listarComentariosPlato')
-    ->name('mostrarComentarioGeneral');
+Route::put('/usuario/comentarios/{idPlato}/aniadir', 'ComentarioController@aniadirComentarioPlato')
+    ->name('aniadirComentarioPlato');

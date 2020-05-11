@@ -23,5 +23,16 @@ class TBLUsuarioSeeder extends Seeder
             'estado_id' => 1,
 
         ]);
+
+        TBLUsuario::create([
+
+            'nombre' => 'Maria',
+            'apellido_p' => 'Camila',
+            'apellido_m' => 'Nuñez',
+            'correo_electronico' => 'maria@prueba.com',
+            'contrasenia' => bcrypt('123456'),
+            'estado_id' => 1,
+
+        ]);
     }
 }
