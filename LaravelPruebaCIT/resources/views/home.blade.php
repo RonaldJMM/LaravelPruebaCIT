@@ -9,5 +9,12 @@
         </div>
     @endif  
 </div>
-@yield('homePrincipal')
+<br>
+<div class="container-fluid"> 
+@if (Session::has('Usuario_Id'))
+    @yield('homePrincipal')
+@else
+    @include('errors.404')
+@endif
+</div>
 @endsection
