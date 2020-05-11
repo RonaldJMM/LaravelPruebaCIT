@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 use \Session;
 
 use App\Models\TBLPlato;
+use App\Models\TBLComentario;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File; 
+
 
 class PlatoController extends Controller
 {
@@ -85,8 +87,17 @@ class PlatoController extends Controller
     public function mostrarPlatoUsuario($idPlato){
         $plato = TBLPlato::find($idPlato);
 
+        $comentarios = TBLComentario::where(['plato_id' => $idPlato,])->orderBy('id','desc')->paginate();
+
+        $NDatosComentarios = "No se han registrado comentarios";
+
+        $idUsuario = Session::get('Usuario_Id');
+
         $datosVista=[
             'plato'=>$plato,
+            'comentarios' => $comentarios,
+            'NDatosComentarios' => $NDatosComentarios,
+            'idUsuario' => $idUsuario,
         ];
 
         return view('content.usuario.plato.mostrarPlatoUsuario', $datosVista);

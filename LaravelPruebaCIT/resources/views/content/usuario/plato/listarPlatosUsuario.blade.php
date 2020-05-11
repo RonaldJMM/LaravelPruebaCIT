@@ -4,14 +4,19 @@
 
     <h1>Lista de platos de Usuario</h1>
           
-    <div class="card bg-secondary text-white">
-        <div class="card-body">
-            {{ $datosPlatosUsuario->total() }} registros | pagina {{  $datosPlatosUsuario->currentPage() }} de {{ $datosPlatosUsuario->lastPage() }}
-        </div>
-        </div>
-        <br>
+
     <table class="table table-sm table-striped table-bordered" >
         <thead class="thead-dark">
+            <tr><td colspan="3"><a class="btn btn-success" href="{{ route('crearPlatoUsuario') }}" role="button"><img style="filter: invert(1)" src="{{ url('images/icons/plus-circle-solid.svg') }}" height="30px" width="30px"> Crear Nuevo </a></td></tr>
+            <tr>
+                <td colspan="3">
+                    <div class="card bg-secondary text-white">
+                        <div class="card-body">
+                            {{ $datosPlatosUsuario->total() }} registros | pagina {{  $datosPlatosUsuario->currentPage() }} de {{ $datosPlatosUsuario->lastPage() }}
+                        </div>
+                    </div>
+                </td>
+            </tr>
             <tr>
             <th scope="col">Imagen</th>
             <th scope="col">Nombre</th>
@@ -19,7 +24,6 @@
             </tr>
         </thead>
         <tbody>
-            <tr><td colspan="3"><a class="btn btn-success" href="{{ route('crearPlatoUsuario') }}" role="button"><img style="filter: invert(1)" src="{{ url('images/icons/plus-circle-solid.svg') }}" height="30px" width="30px"> Crear Nuevo </a></td></tr>
             @forelse ($datosPlatosUsuario as $plato)
             <tr>
             <td><img src="{{ $plato->url_imagen }}" class="img-thumbnail border-dark rounded mx-auto d-block" height="50px" width="50px"></td>

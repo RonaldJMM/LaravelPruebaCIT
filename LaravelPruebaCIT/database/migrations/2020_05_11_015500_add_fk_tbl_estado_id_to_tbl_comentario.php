@@ -14,7 +14,7 @@ class AddFkTblEstadoIdToTblComentario extends Migration
     public function up()
     {
         Schema::table('TBL_Comentario', function (Blueprint $table) {
-            $table->integer('estado_id')->unsigned()->after('plato_id');
+            $table->integer('estado_id')->unsigned()->after('usuario_id');
             $table->foreign('estado_id')->references('id')->on('TBL_Estado');
         });
     }

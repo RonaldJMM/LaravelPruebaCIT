@@ -15,7 +15,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->truncateTables([
-            'TBL_Usuario',
+            'TBL_Comentario',
+            'TBL_Plato',
+            'TBL_Usuario',            
+            'TBL_Estado',            
         ]);
 
         $this->call([
