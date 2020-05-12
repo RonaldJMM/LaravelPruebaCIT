@@ -26,19 +26,11 @@
         
         <tr>
             <td scope="col"><label for="descripcion">Correo:</label></td>
-            <td scope="col"><input type="text" name="email" id="email" value="{{ $datosUsuario->email}}"></td>
+            <td scope="col"><input type="text" name="email" id="email" value="{{ $datosUsuario->email}}" disabled ></td>
         </tr>
         <tr><td colspan="1"><button type="submit" class="btn btn-info">Actualizar</button></td>
     </form>
 
-    <form action="POST" action="{{route('actualizarContrasenia')}}">
-
-        @csrf
-         <label for="password">Contraseña:</label>
-        <input type="password" name="password">
-    
-        <button type="submit" class="btn btn-info">Actualizar</button>
-    </form>
 
     </tbody>
     </table>
