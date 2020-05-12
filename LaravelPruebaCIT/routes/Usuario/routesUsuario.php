@@ -62,3 +62,6 @@ Route::get('/usuario/editar', 'UsuarioController@editarUsuario')
 
 Route::put('/usuario/editar', 'UsuarioController@actualizarUsuario')
     ->name('actualizarUsuario');
+
+Route::put('/usuario/contrasenia', 'UsuarioController@actualizarContrasenia')
+    ->name('actualizarContrasenia');

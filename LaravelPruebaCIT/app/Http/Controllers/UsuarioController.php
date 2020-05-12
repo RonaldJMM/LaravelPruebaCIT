@@ -38,7 +38,7 @@ class UsuarioController extends Controller
             'apellido' => ['required'],
         ],[
             'nombre.required' => 'Se debe llenar el campo Nombre',
-            'apellido.required' => 'Se debe llenar la descripcion',
+            'apellido.required' => 'Se debe llenar el campo Apellido',
         ]);
 
         $datos = request();
@@ -52,6 +52,12 @@ class UsuarioController extends Controller
         
         return redirect(route('editarUsuario'));
 
+    }
+
+    
+
+    public function actualizarContrasenia(){
+        dd(request());
     }
         
 }

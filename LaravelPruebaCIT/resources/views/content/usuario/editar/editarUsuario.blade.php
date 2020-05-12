@@ -9,7 +9,7 @@
         </thead>
         <tbody>
 
-    <form method="POST" action="{{route('actualizarUsuario', $datosUsuario->id)}}" enctype="multipart/form-data">
+    <form method="POST" action="{{route('actualizarUsuario', $datosUsuario->id)}}">
 
         {{ method_field('PUT') }}
         @csrf
@@ -28,16 +28,20 @@
             <td scope="col"><label for="descripcion">Correo:</label></td>
             <td scope="col"><input type="text" name="email" id="email" value="{{ $datosUsuario->email}}"></td>
         </tr>
-
-        
-        <tr>
-            <td scope="col"><label for="descripcion">Contraseña:</label></td>
-            <td scope="col"><input type="text" name="email" id="email" value="{{ $datosUsuario->email}}"></td>
-        </tr>
-        
         <tr><td colspan="1"><button type="submit" class="btn btn-info">Actualizar</button></td>
-            
     </form>
 
+    <form action="POST" action="{{route('actualizarContrasenia')}}">
+
+        @csrf
+         <label for="password">Contraseña:</label>
+        <input type="password" name="password">
+    
+        <button type="submit" class="btn btn-info">Actualizar</button>
+    </form>
+
+    </tbody>
+    </table>
+</div>
     
 @endsection
