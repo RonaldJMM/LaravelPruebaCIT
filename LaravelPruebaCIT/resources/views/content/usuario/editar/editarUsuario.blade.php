@@ -35,12 +35,6 @@
             <td scope="col"><input type="text" name="email" id="email" value="{{ $datosUsuario->email}}"></td>
         </tr>
         
-        <tr>
-            <td scope="col"><label for="descripcion">Confirmar Contraseña:</label></td>
-            <td scope="col"><input type="text" name="email" id="email" value="{{ $datosUsuario->email}}"></td>
-        </tr>
-        
-
         <tr><td colspan="1"><button type="submit" class="btn btn-info">Actualizar</button></td>
             
     </form>
