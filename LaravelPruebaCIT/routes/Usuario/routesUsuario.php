@@ -56,3 +56,9 @@ Route::put('/usuario/comentarios/{idPlato}/{idComentario}/deshabilitarvista', 'C
 
 Route::get('/usuario/comentarios/{idPlato}/{idComentario}/eliminar', 'ComentarioController@eliminarComentarioPlato')
     ->name('eliminarComentarioPlato');
+
+Route::get('/usuario/editar', 'UsuarioController@editarUsuario')
+    ->name('editarUsuario');
+
+Route::put('/usuario/editar', 'UsuarioController@actualizarUsuario')
+    ->name('actualizarUsuario');

@@ -20,5 +20,6 @@
     @yield('mostrarPlatoUsuario')
     @yield('editarPlatoUsuario')
     @yield('listarPlatosGenerales')
+    @yield('editarUsuario')
 
 @endsection
