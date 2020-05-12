@@ -2,7 +2,7 @@
 
 @section('mostrarPlatoUsuario')
 
-    <h1>Plato: {{ $plato->nombre }}</h1>
+    <h1>Usuario: {{ $usuario['nombre']." ".$usuario['apellido'] }}</h1>
           
     <div class="alert alert-secondary" role="alert">
     <table class="table table-sm table-striped table-bordered table-light" >
@@ -59,6 +59,7 @@
         <thead class="thead-dark">
             
             <tr>
+            <th scope="col">Usuario</th>
             <th scope="col" colspan="2">Descripcion</th>
             <th scope="col" colspan="1">Editar</th> 
             <th scope="col" colspan="1">Estado</th> 
@@ -69,6 +70,7 @@
             @forelse ($comentarios as $comentario)
             @if ($comentario->estado_id == 1 || $comentario->usuario_id == $idUsuario)
             <tr>
+            <td colspan="1">{{ $comentario->nombre." ".$comentario->apellido }}</td>
              <td colspan="2">{{$comentario->descripcion}}</td>
             
                 @if ($comentario->usuario_id == $idUsuario)

@@ -2,7 +2,7 @@
 
 @section('listarPlatosUsuario')
 
-    <h1>Lista de platos de Usuario</h1>
+    <h1>Mis Platos</h1>
           
     <div class="alert alert-secondary" role="alert">
         <a class="btn btn-success" href="{{ route('crearPlatoUsuario') }}" role="button"><img style="filter: invert(1)" src="{{ url('images/icons/plus-circle-solid.svg') }}" height="30px" width="30px"> Crear Nuevo </a></td></tr>
@@ -57,7 +57,7 @@
         </tr>
             @empty
             <tr>
-            <td colspan="3">{{$NDatosPlatos}}</td>
+            <td colspan="5">{{$NDatosPlatos}}</td>
             </tr>
             @endforelse
         </tbody>

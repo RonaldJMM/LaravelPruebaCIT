@@ -2,7 +2,7 @@
 
 @section('listarPlatosGenerales')
 
-    <h1>Lista de platos Generales</h1>
+    <h1>Buscar Platos</h1>
     
     <div class="alert alert-secondary" role="alert">
     <div class="card bg-secondary text-white">

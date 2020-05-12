@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use \Session;
 
+use DB;
+
+use App\Models\TBLUsuario;
 use App\Models\TBLPlato;
 use App\Models\TBLComentario;
 
@@ -85,16 +88,24 @@ class PlatoController extends Controller
     }
 
     public function mostrarPlatoUsuario($idPlato){
+
         $plato = TBLPlato::find($idPlato);
 
-        $comentarios = TBLComentario::where(['plato_id' => $idPlato,])->orderBy('id','desc')->paginate();
+        $usuario = TBLUsuario::find($plato->usuario_id);
 
         $NDatosComentarios = "No se han registrado comentarios";
 
-        $idUsuario = Session::get('Usuario_Id');
+        $resources = DB::table('tbl_usuario')->join('tbl_comentario','tbl_usuario.id','=','tbl_comentario.usuario_id');
+    
+        $comentarios = $resources->orderBy('tbl_comentario.id','DESC')->paginate();
 
+
+        $idUsuario = Session::get('Usuario_Id');
+        
         $datosVista=[
-            'plato'=>$plato,
+            'usuario' => ['nombre' => $usuario->nombre,
+                          'apellido' => $usuario->apellido],
+            'plato' => $plato,
             'comentarios' => $comentarios,
             'NDatosComentarios' => $NDatosComentarios,
             'idUsuario' => $idUsuario,

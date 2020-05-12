@@ -16,4 +16,9 @@ class TBLComentario extends Model
         'estado_id'
 
     ];
+
+    public function resources()
+    {
+        return $this->hasManyThrough('App\Models\TBLComentario', 'App\Models\TBLUsuario');
+    }
 }
